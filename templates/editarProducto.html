@@ -1,0 +1,78 @@
+{% extends 'plantilla.html' %}
+{% block titulo %} Editar Producto {% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+{% endblock %}
+
+{% block contenido %}
+<body onload="load();">
+<form id="form-editaProd" method="POST" action="/graba_editar_Producto" enctype="multipart/form-data">
+  <div class="card">
+    <div class="card-header">
+      Editar Producto
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Datos del Producto</h5>
+    
+        <p class="card-text">
+    
+          <div class="form-group">
+            <label for="my-input">Id_Producto:</label>
+            <input id="id" class="form-control" type="text" name="id" value="{{ producto[0][0] }}" readonly="readonly">
+          </div>
+    
+          <div class="form-group">
+            <label for="my-input">Proveedor:</label>
+            <input id="proveedor" class="form-control" type="text" name="proveedor" value="{{ producto[0][7] }}" tabindex="1" autofocus="on" placeholder="Proveedor..." maxlength="45" onblur="SinFoco(this)">
+          </div>
+    
+          <div class="form-group">
+            <label for="my-input">Producto:</label>
+            <input id="producto" class="form-control" type="text" name="producto" value="{{ producto[0][1] }}" tabindex="2" placeholder="Nombre del Producto..." maxlength="80" onblur="SinFoco(this)">
+          </div>
+    
+          <div class="form-group">
+            <label for="my-input">Costo:</label>
+            <input id="costo" class="form-control numero cuenta" step="0.01" type="number" value="{{ producto[0][2] }}" tabindex="3" name="costo" placeholder="Precio de Costo...">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">Precio de Venta:</label>
+            <input class="form-control numero cuenta" step="0.01" type="number" value="{{ producto[0][3] }}" id="preciovta" tabindex="4" name="preciovta" placeholder="Precio de Venta...">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">PVP Sugerido:</label>
+            <input step="0.01" class="form-control numero" type="number" id="pvpsug" value="{{ producto[0][4] }}" name="pvpsug" tabindex="5" placeholder="PVP Sugerido...">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">Utilidad:</label>
+            <input class="form-control resultado numero" type="text" readonly="readonly" value="{{ producto[0][5] }}" id="utilidad" name="utilidad" value="0">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">% de Utilidad:</label>
+            <input class="form-control numero resultado" readonly="readonly" type="text" value="{{ producto[0][6] }}" id="porcutilidad" name="porcutilidad">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">Imagen:</label>
+            <img class="img-thumbnail" src="{{ url_for('uploads',nombreFoto=producto[0][8]) }}" widht="400px" height="250px" alt="foto producto"><br/><br/>
+            <input class="form-control" type="file" name="imagen" id="imagen" tabindex="6">
+          </div>
+
+          <div class="form-group">
+            <span><button type="submit" id="btn-reg" tabindex="7">Editar Producto</button></span>
+            <span><a href="url_for{'/consultaProductos'}"><button id="btn-reg">Volver</button></a></span>
+          </div>  
+      </p>
+
+    </div>
+  </form>
+       <!--<a href="{{ url_for('home') }}">Volver</a>-->
+       <script type="text/javascript" src="{{ url_for('static',filename='js/altaproducto.js')}}"></script>
+</body>
+{% endblock %}

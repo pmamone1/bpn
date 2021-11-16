@@ -1,0 +1,644 @@
+/* *** Estilo General *** */
+
+body, html{
+    height: 100%;
+}
+.body_home{
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+input[type='file'] {
+    color: whitesmoke;
+  }
+.info-modal{
+    position: relative;
+    margin-right: 65px;
+    font-size: 1.7em;
+    font-style:bold;
+    color:darkblue;
+}
+.titulo-modal{
+    margin-left: 12px;
+    font-size: 1em;
+    font-style:bold;
+    color:darkslategray;
+}
+.modal-title{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size:2em;
+    color:yellow;
+    font-style: bold;
+
+}
+
+#modalSpan{
+    color:silver;
+}
+.modal-header{
+    display:flex;
+    background-color:#2f3542;
+}
+.form-btn-volver{
+    background-color: rgb(101, 49, 149);
+    color: white;
+}
+#modalSpan{
+    font-size: 0.7em;
+}
+body{
+    margin:0;
+    padding:0;
+    background-color: #2f3542;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto{
+    background-color:#2f3542 !important;
+    color:whitesmoke !important;
+    padding:10px;
+    margin:8px 10px 10px 10px;
+    width:60%;
+    border-radius: 35px;
+    border: solid 2px rgb(157, 171, 251) !important;
+    transition: all 0.25s;
+    font-size: 0.8em;
+    text-align: center;
+    box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+}
+.label-altaP{
+    color:silver;
+    margin:10px;
+    text-align: left;
+    width: 100px;
+}
+
+#utilidad, #porcutilidad{
+    position: relative !important;
+    margin-left: 3vw;
+    margin-right:3.5vw;
+    font-size: 1em !important;
+    line-height:1em !important;
+    width: 31vw !important;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#util, #util2{
+    margin-left: 3.5vw;
+}
+.util{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    align-content: space-around;
+}
+
+.alert_messageAlta{
+position:relative;
+text-align: center;
+background-color: rgb(224, 171, 127);
+color:rgb(92, 59, 22)
+}
+.texto:hover{
+    background-color:white !important;
+    color:#2f3542 !important;
+    border-color:#2f3542 !important;
+    font-size: 1em !important;
+}
+thead tr th { 
+    position: sticky!important;
+    top: 0!important;
+    z-index: 10!important;
+}
+.table-wrapper {
+    max-height: 500px;
+    overflow: auto;
+    display:inline-block;
+  }
+.texto:focus{
+    background-color:white !important;
+    color:#2f3542 !important;
+    font-size: 1em !important;
+    border: solid 2px rgb(157, 171, 251) !important;
+}
+.header_fijo {
+    width: 750px;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+#taulaSalidas{
+    height: 0;
+    margin-top: 10vh;
+}
+#tablaProductosSalidas{
+    position: relative!important;
+    margin-top: -300px !important;
+    margin-right: auto!important;
+    margin-left: auto!important;
+    height: 460px !important;
+    overflow: auto!important;
+    width: 98vw!important;
+    box-shadow: 15px 15px 15px black;
+}
+#btn-info{
+    padding: 2vh;
+    margin:0;
+    position: relative;
+    margin-top: 50px;
+    margin-left: -100px;
+    background: rgb(31,33,33);
+    border-radius: 2vh;
+    box-shadow: 15px 15px 15px black;
+}
+.btn-cons{
+    margin-left: 18px;
+}
+#checkConsulta{
+    margin-left: 18px;
+    padding:5px;
+}
+#checkConsulta{
+    padding: 1vh;
+}
+#btnTotales{
+    padding: 1vh;
+}
+
+#btn-reg{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color:rgb(45, 52, 66)!important;
+    color:white !important;
+    border: solid 1px white;
+    padding:10px;
+    border-radius: 50px;
+    width: 12vw;
+    box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+}
+#form-editaProd{
+    padding:20vw !important;
+    margin-top:-60vw !important;
+    width: 80% !important;
+    height:80% !important;
+}
+
+#btn-reg:focus, #btn-reg:hover{
+    color:rgb(45, 52, 66)!important;
+    background-color:white !important;
+    cursor:pointer;
+   
+}
+.footer{
+    position:absolute !important;
+    bottom:-12vh;
+    display: block !important;
+    padding-top: 1.5vh;
+    text-align:center !important;
+    color: whitesmoke;
+    background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background-blend-mode: multiply;    
+    width: 100%;
+    height:6vh;
+}
+
+#form-consulta{
+    position:relative!important;
+    top:-13vh !important;
+    background: rgb(59,55,55)!important;
+    background: linear-gradient(90deg, rgba(59,55,55,1) 0%, rgba(105,99,100,1) 100%)!important;
+    padding: 5vh !important;
+    border-radius: 3vw!important;
+    box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -webkit-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -moz-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+}
+#form-consultaP{
+    position:relative!important;
+    top:-32vh !important;
+    background: rgb(59,55,55)!important;
+    background: linear-gradient(90deg, rgba(59,55,55,1) 0%, rgba(105,99,100,1) 100%)!important;
+    padding: 5vh !important;
+    border-radius: 3vw!important;
+    box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -webkit-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -moz-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+}
+
+#formulario_alta_producto{
+    background-color: #2f3542;
+    padding:10px;
+    width:35vw;
+    margin-top:12vh;
+    margin-bottom: 15vh;
+    height:85vh;
+    display:flex;
+    flex-direction: column;
+    align-content:space-around;
+    box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -webkit-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -moz-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+}
+
+#formulario_alta_salidas{
+    background-color: #2f3542;
+    padding:10px;
+    width:35vw;
+    margin-top:15vh;
+    margin-bottom: 15vh;
+    height:80vh;
+    display:flex;
+    flex-direction: column;
+    align-content:space-around;
+    box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -webkit-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -moz-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+}
+.footerSalida{
+    position: absolute;
+    width: 99vw!important;
+    margin-bottom: 0;
+    left: 0;
+}
+
+
+.form-altaP{
+    display:flex;
+    text-align: center;
+    align-items: center;
+    align-content:space-between;
+}
+.form-alta-salidas{
+    display:flex;
+    text-align: center;
+    align-items: center;
+    align-content:space-between;
+}
+
+.navbar-brand{
+    font-family: 'Roboto', sans-serif !important;
+    color:rgb(197, 228, 248) !important;
+    font-size:2em !important;
+    line-height:3px; 
+    margin-left: 15px !important;
+}
+.logo_nav{
+    width: 3%;
+    height: 3%;
+}
+.nav-link:hover{
+    font-size:1.1em !important;
+    color:lightcoral !important;
+}
+.usu{
+    position: absolute;
+    right: 110px;
+    top: 27px;
+    font-family: 'Roboto', sans-serif;
+    color:rgb(226, 195, 255);
+    font-size:0.8em;
+}
+.ico{
+    margin-right: 1vw;
+}
+.log_out{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    margin-left: 1vw;
+    width: 0.5em;
+    height:0.5em;
+}
+.log_out:link {
+    color: red;
+  }
+  
+  /* visited link */
+  .log_out:visited {
+    color: red;
+  }
+  
+  /* mouse over link */
+  .log_out:hover {
+    color: white;
+  }
+.usulabel{
+    position: absolute;
+    right: 270px;
+    top: 20px;
+    font-family: 'Roboto', sans-serif;
+    color:lightgray;
+    font-size:0.8em;
+}
+.alert_message{
+    background-color: rgb(251, 217, 122);
+    color:saddlebrown;
+    font-size:0.7em;
+    transition:all 0.25s;
+    -webkit-animation: cssAnimation 10s forwards; 
+    animation: cssAnimation 10s forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+/*   *** Estilo Index.html ***   */
+.form-box{
+    width:300px;
+    padding:40px;
+    background-color:#191919;
+    text-align: center;
+}
+th, td{
+    text-align: center!important;
+}
+.botonSalidas{
+    margin-top: 15px;
+}
+.form-title{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 5vh;
+    margin-top:5vh;
+    font-size:2em;
+    text-shadow: 15px 10px 12px rgba(0,0,0,0.65);
+}
+
+
+.form-box input[type="text"],
+.form-box input[type="email"],
+.form-box input[type="password"],
+.form-box button[type="submit"]{
+    color: #fff;
+    border: 0;
+    background:none;
+    display: block;
+    margin:20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border:2px solid #3742fa;
+    width:200px;
+    outline: none;
+    border-radius: 24px;
+    transition:0.25s;
+}
+
+.form-box input[type="text"]:focus,
+.form-box input[type="email"]:focus,
+.form-box input[type="password"]:focus{
+    width:280px;
+    border-color: #ffffff;
+}
+
+.form-box input[type="text"]:hover,
+.form-box input[type="email"]:hover,
+.form-box input[type="password"]:hover{
+    border:2px solid #ffffff;
+}
+.form-box button[type="submit"]{
+    border:2PX solid #5352ed;
+    background:#5352ed;
+    cursor:pointer;
+    margin-top: 5vh;
+}
+.form-box button[type="submit"]:hover{
+    border:2px solid #3742fa;
+    background:none;
+}
+.form-side{
+    color:#5352ed;
+    font-size: 0.8em;
+    margin:10px auto;
+    transition: 0.25s;
+}
+.form-side:hover{
+    color:#ffffff;
+    font-size: 0.95em;
+}
+.form-logo{
+    width: 25%;
+    height:25%;
+}
+table{
+display:flex !important;
+flex-direction: column!important;
+margin-top: -55vh!important;
+vertical-align: middle!important;
+}
+#tablaProducto{
+    width: 100% !important;
+    margin: 0 !important;
+    padding:0!important;
+  
+}
+
+#taula {
+    position: relative!important;
+    margin-top: -450px !important;
+    margin-right: auto!important;
+    margin-left: auto!important;
+    height: 380px !important;
+    overflow: auto!important;
+    width: 64.5vw!important;
+    box-shadow: 15px 15px 15px black;
+}
+
+    
+.label-Salida{
+    color: white !important;
+    position: absolute !important;
+    text-align: left !important;
+    left:800px;
+    margin-top: 10px;
+    text-shadow: 6px 8px 9px rgba(0,0,0,0.65);
+}
+.inp{
+    position: relative!important;
+    margin-left: 150px!important;
+    width: 220px!important;
+    background-color:#2f3542;
+    color: lightblue;
+    border-radius: 5vw;
+    padding:0.3vw;
+    padding-left: 1vw;
+    box-shadow: 10px 10px 10px black;
+}
+.a{
+    text-shadow: 1.5px 2px 2px rgba(124, 108, 108, 0.65);
+    font-size:1.2em;
+}
+.salidasDiv{
+    margin-bottom:3vh!important;
+}
+.form-title{
+    margin-bottom:8vh!important;
+    text-shadow: 6px 8px 9px rgba(0,0,0,0.65);
+}
+.botonSalidas{
+    margin-top: 3vh!important;
+    box-shadow: 15px 15px 15px black;
+}
+
+@media (max-width: 1366px) {
+    #formulario_alta_producto{
+    height:116vh;
+    }
+  
+  #tablaProducto{
+    width: 100% !important;
+    margin: 0 !important;
+    padding:0!important;
+}
+
+    #taula {
+        position: relative!important;
+        margin-top: -200px !important;
+        margin-right: auto!important;
+        margin-left: auto!important;
+        height: 280px !important;
+        overflow: auto!important;
+        width: 90.5vw!important;
+        box-shadow: 15px 15px 15px black;
+    }
+    .footer{
+        position:absolute !important;
+        bottom:-45vh;
+        display: block !important;
+        padding-top: 1.5vh;
+        text-align:center !important;
+        color: whitesmoke;
+        background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+        background-blend-mode: multiply;    
+        width: 100vw!important;
+        height:6vh;
+        margin-left: 0vw!important;
+       
+    }
+    
+.label-Salida{
+    color: white !important;
+    position: absolute !important;
+    text-align: left !important;
+    left:530px;
+}
+.inp{
+    position: relative!important;
+    margin-left: 140px!important;
+    width: 220px!important;
+}
+.salidasDiv{
+    margin-bottom:3vh!important;
+}
+.form-title{
+    margin-bottom:8vh!important;
+}
+
+#formulario_alta_salidas{
+    background-color: #2f3542;
+    padding:10px;
+    width:35vw;
+    margin-top:15vh;
+    margin-bottom: 3vh;
+    height:95vh;
+    display:flex;
+    flex-direction: column;
+    align-content:space-around;
+    box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -webkit-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -moz-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+}
+
+#form-consulta{
+    position:relative!important;
+    top:-15vh !important;
+    background: rgb(59,55,55)!important;
+    background: linear-gradient(90deg, rgba(59,55,55,1) 0%, rgba(105,99,100,1) 100%)!important;
+    padding: 5vh !important;
+    border-radius: 3vw!important;
+    box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -webkit-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -moz-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+}
+
+#taulaSalidas{
+    position: relative!important;
+    margin-top: -80px !important;
+    margin-right: 1px!important;
+    margin-left: 1px!important;
+    height: 300px !important;
+    overflow: auto!important;
+    width: 100vw!important;
+    box-shadow: 15px 15px 15px black;
+}
+
+#tablaProductosSalidas{
+    width: 100% !important;
+    margin: 0 !important;
+    padding:0!important; 
+    box-shadow: 15px 15px 15px black;
+}
+.btn-cons{
+    display: flex;
+    align-content: space-between;
+    margin-left: 18px;
+}
+#checkConsulta{
+    background-color:cyan!important;
+    color:white!important;
+    padding:2vh;
+    width: 50px;
+    height:10px;
+}
+#form-consulta{
+    position:relative!important;
+    top:-4vh !important;
+    background: rgb(59,55,55)!important;
+    background: linear-gradient(90deg, rgba(59,55,55,1) 0%, rgba(105,99,100,1) 100%)!important;
+    padding: 1.5vh !important;
+    padding-left: 3vw!important;
+    padding-right: 3vw!important;
+    border-radius: 3vw!important;
+    box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -webkit-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+    -moz-box-shadow: 15px 15px 8px 0px rgba(5,0,5,0.55);
+}
+
+#btn-info{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    padding: 2vh;
+    margin:0;
+    position: relative;
+    margin-top: -12px;
+    margin-left: -100px;
+    background: rgb(31,33,33);
+    border-radius: 2vh;
+    box-shadow: 15px 15px 15px black;
+    width: 50vw!important;
+}
+}

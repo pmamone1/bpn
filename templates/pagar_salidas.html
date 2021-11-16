@@ -1,0 +1,82 @@
+{% extends 'plantilla.html' %}
+{% block titulo %} Pagar Salidas {% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+{% endblock %}
+
+{% block contenido %}
+<body onload="load();">
+<form id="form-editaProd" method="POST" action="{{ url_for('graba_pagar_salidas') }}">
+  <div class="card">
+    <div class="card-header">
+      Pagar Producto
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Datos de la Salida</h5>
+    
+        <p class="card-text">
+          <input id="id" type="hidden" name="id" value="{{ producto[0][0] }}">
+          <input id="factura_venta" type="hidden" value="{{ producto[0][9] }}" name="factura_venta">
+          
+              <div class="form-group">
+                <label for="my-input">Ingrese su Pago:</label>
+                <input class="form-control resultado numero" tabindex="1" onfocus="select()" autofocus="on" type="number" step="0.01" value="{{ producto[0][16] }}" id="pago" name="pago">
+              </div>
+            <div class="form-group">
+                <label for="my-input">Saldo:</label>
+                <input class="form-control resultado numero" tabindex="2" type="number" readonly="readonly" value="{{ producto[0][14] }}" id="saldo" name="saldo">
+            </div>
+            <div class="form-group">
+                <label for="my-input">Factura Total:</label>
+                <input id="factura_venta" type="number" step="0.01" tabindex="3" readonly="readonly" value="{{ producto[0][9] }}" name="factura_venta">
+              </div>    
+            <div class="form-group">
+            <label for="my-input">Fecha Salida:</label>
+            <input id="fecha_salida" class="form-control" type="text" tabindex="4" name="fecha_salida" readonly="readonly" value="{{ producto[0][1] }}" tabindex="1">
+          </div>
+    
+          <div class="form-group">
+            <label for="my-input">Proveedor:</label>
+            <input id="proveedor" class="form-control" type="text" tabindex="5" name="proveedor" readOnly="readonly" value="{{ producto[0][2] }}" tabindex="2" placeholder="Proveedor...." maxlength="80" onblur="SinFoco(this)">
+          </div>
+    
+          <div class="form-group">
+            <label for="my-input">Cliente:</label>
+            <input id="cliente" class="form-control numero cuenta" tabindex="6" type="text" readonly="readonly" value="{{ producto[0][3] }}" tabindex="3" name="cliente" placeholder="Cliente....">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">Producto:</label>
+            <input class="form-control numero cuenta" type="text" tabindex="7" value="{{ producto[0][4] }}" readonly="readonly" id="producto" tabindex="4" name="producto" placeholder="Producto....">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">Cantidad:</label>
+            <input class="form-control numero" type="number" tabindex="8" id="cantidad" value="{{ producto[0][5] }}" readonly="readonly" name="cantidad" tabindex="5" placeholder="Cantidad....">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">Venta:</label>
+            <input class="form-control resultado numero" tabindex="9" type="number" step="0.01" readonly="readonly" value="{{ producto[0][12] }}" id="venta" name="venta">
+          </div>
+
+          <div class="form-group">
+            <label for="my-input">Stock:</label>
+            <input class="form-control resultado numero" tabindex="10" type="number" step="0.01" readonly="readonly" value="{{ producto[0][13] }}" id="stock" name="stock">
+          </div>
+          <br><br><br>
+          <input class="form-control resultado numero" type="hidden" value="{{ producto[0][15] }}" id="liquidado" name="liquidado">
+          <div class="form-group">
+            <span><button type="submit" id="btn-reg" onclick="control()" tabindex="11">Pagar</button></span>
+            <span><a href="url_for{'/consultaSalidas'}"><button onclick="control()" tabindex="12" id="btn-reg">Volver</button></a></span>
+          </div>  
+      </p>
+        
+    </div>
+  </form>
+       <!--<a href="{{ url_for('home') }}">Volver</a>-->
+       <script type="text/javascript" src="{{ url_for('static',filename='js/altaproducto.js')}}"></script>
+</body>
+{% endblock %}

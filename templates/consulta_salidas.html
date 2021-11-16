@@ -1,0 +1,156 @@
+{% extends "plantilla.html" %}
+{% block titulo %} Consulta de Salidas {% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/estilos.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+{% endblock %}
+
+{% block contenido %}
+<body onload="load();">    
+
+    <div id="form-consulta" class="container-md formConsSalidas">
+        <form method="post" class="d-flex" action="{{ url_for('buscar_salidas') }}">
+            <input name="proveedor" id="proveedor" class="form-control" type="search" placeholder="Buscar....">
+            <button id="btn-consulta" class="btn btn-secondary" type="submit">Consultar</button>
+        </form>
+    </div>
+   
+    <div id="taulaSalidas">
+            <table id="tablaProductosSalidas" class="table table-wrapper table-dark table-striped table-hover table-sm table align-middle">
+            <thead class="thead-dark justify-content-md-center">
+                <tr>
+                    <th  style="width: 3em" class="Cabecera">Id</th>
+                    <th  style="width: 8em" class="Cabecera">Fecha Salida</th>
+                    <th  style="width: 6em" class="Cabecera">Proveedor</th>
+                    <th  style="width: 6em" class="Cabecera">Cliente</th>
+                    <th  style="width: 12em" class="Cabecera">Producto</th>
+                    <th  style="width: 6em" class="Cabecera">Cantidad</th>
+                    <th  style="width: 6em" class="Cabecera">Precio Costo</th>
+                    <th  style="width: 6em" class="Cabecera">Precio Venta</th>
+                    <th  style="width: 6em" class="Cabecera">Facturacion Costo</th>
+                    <th  style="width: 7em" class="Cabecera">Facturacion Venta</th>
+                    <th  style="width: 6em" class="Cabecera">Utilidad x u.</th>
+                    <th  style="width: 7em" class="Cabecera">Utilidad Total</th>
+                    <th  style="width: 6em" class="Cabecera">Venta</th>
+                    <th  style="width: 6em" class="Cabecera">Stock</th>
+                    <th  style="width: 6em" class="Cabecera">Pago</th>
+                    <th  style="width: 6em" class="Cabecera">Saldo</th>
+                    <th  style="width: 4em" class="Cabecera">Liquidado</th>
+                    <th  style="width: 16em" class="cabecera">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr id="estaEs">
+                    <td style="width: 3em" class="Cabecera">{{ producto[0] }}</td>
+                    <td style="width: 8em" class="Cabecera">{{ producto[1] }}</td>
+                    <td style="width: 6em" class="Cabecera">{{ producto[2] }}</td>
+                    <td style="width: 6em" class="Cabecera">{{ producto[3] }}</td>
+                    <td style="width: 12em" class="Cabecera">{{ producto[4] }}</td>
+                    <td id="carga" style="width: 6em" class="Cabecera">{{ producto[5] }}</td>
+                    <td style="width: 6em" class="Cabecera">{{ producto[6] }}</td>
+                    <td id="precioVenta" style="width: 6em" class="Cabecera">{{ producto[8] }}</td>
+                    <td id="costo" style="width: 6em" class="Cabecera">{{ producto[7] }}</td>
+                    <td id="facturacion" style="width: 7em" class="Cabecera">{{ producto[9] }}</td>
+                    <td style="width: 5.3em" class="Cabecera">{{ producto[10] }}</td>
+                    <td id="util"style="width: 7.1em" class="Cabecera">{{ producto[11] }}</td>
+                    <td id="venta" style="width: 6em" class="Cabecera">{{ producto[12] }}<td>
+                    <td id="stock" style="width: 6em" class="Cabecera">{{ producto[13] }}</td>
+                    <td id="pago" style="width: 4em" class="Cabecera">{{ producto[16] }}</td>
+                    <td id="saldo" style="width: 4em" class="Cabecera">{{ producto[14] }}</td>
+                    <td id ="liquidado" style="width: 4em" class="Cabecera">{{ producto[15] }}</td>
+                    <td style="width: 16em" class="Cabecera"> 
+                        <a class="btn btn-primary" href="/ventas_salidas/{{producto[0]}}"><i class="fas fa-cart-plus"></i></a>
+                        <a class="btn btn-success" href="/pagar_salidas/{{producto[0]}}"><i class="fas fa-dollar-sign"></i></a>  
+                        <a class="btn btn-warning" href="/editar_salidas/{{producto[0]}}"><i class="fas fa-edit"></i></a>  
+                        <a onClick="return confirm('¿Desea borrar el registro - {{ producto[4] }} ?') " class="btn btn-danger" href="/eliminar_salidas/{{producto[0]}}"><i class="fas fa-trash-alt"></i></a>   
+                    </td>
+                </tr>    
+                {% endfor %}           
+            </tbody>
+        </table>
+    </div>
+    <div id="btn-info" class="container-md">    
+        <!-- Button trigger modal -->
+        <button id="btnTotales" type="button" onclick="Totales()" class="btn btn-secondary btn-cons" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+            Detalle de la Consulta
+        </button>
+        <button id="excel" class="btn btn-secondary btn-cons" onclick="ExportToExcelSalidas('xlsx')">Exportar la tabla a Excel    <i class="btn btn-success fas fa-file-excel"></i></a>
+         <!-- checkbox--> 
+         <button type="button" id="checkConsulta" class="btn btn-secondary btn-cons">Ver solo Productos sin liquidar</button>
+        </input>
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Detalle de la consulta</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+            <span id="modalSpan" aria-hidden="true">(esc-Salir)</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+              <label class="titulo-modal">Carga Total:</label>
+              <label id="cargaModal" class="info-modal"><strong></strong></label>
+          </div>
+          <div>
+            <label class="titulo-modal">Venta Total:</label>
+            <label id="ventaModal"class="info-modal"><strong></strong></label>
+        </div>
+        <div>
+            <label class="titulo-modal">Stock Total:</label>
+            <label id="stockModal" class="info-modal"><strong></strong></label>
+        </div>
+        <div>
+            <label class="titulo-modal">Cantidad de Filas:</label>
+            <label id="filas" class="info-modal"><strong></strong></label>
+        </div>   
+        <div></div>
+        <br>
+        </div>
+        <div class="modal-footer">
+            <div class="modal-body">
+                <div>
+                    <label class="titulo-modal">Costo Total:</label>
+                    <label id="costoModal" class="info-modal"><strong></strong></label>
+                </div>
+                <div>
+                    <label class="titulo-modal">Facturacion Total:</label>
+                    <label id="facturacionModal" class="info-modal"><strong></strong></label>
+                </div>
+                <div>
+                  <label class="titulo-modal">Utilidad Total:</label>
+                  <label id="utilidadModal"class="info-modal"><strong></strong></label>
+              </div>
+              <div>
+                  <label class="titulo-modal">Pago Total:</label>
+                  <label id="pagoModal" class="info-modal"><strong></strong></label>
+              </div>
+              <div>
+                <label class="titulo-modal">Saldo Total:</label>
+                <label id="saldoModal"class="info-modal"><strong></strong></label>
+            </div>
+            <div>
+                <label class="titulo-modal">Saldo al Dia:</label>
+                <label id="saldoAlDiaModal" class="info-modal"><strong></strong></label>
+            </div>
+            </div>
+            <!--
+          <button type="button" class="btn btn-primary">Salir</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="cerrarModal();">Cerrar</button>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/ventasSalidas.js')}}"></script>
+    </body>
+  {% endblock %}

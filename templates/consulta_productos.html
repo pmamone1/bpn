@@ -1,0 +1,61 @@
+{% extends "plantilla.html" %}
+{% block titulo %} Consulta de Productos {% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+<link rel="stylesheet" type="text/css" href="/static/css/estilos.css">
+{% endblock %}
+
+{% block contenido %}
+<body onload="load();">    
+
+    <div id="form-consultaP" class="container-md">
+        <form method="post" class="d-flex" action="{{ url_for('buscar') }}">
+            <input name="proveedor" id="proveedor" class="form-control" type="search" placeholder="Buscar....">
+            <button id="btn-consulta" class="btn btn-secondary" type="submit">Consultar</button>
+        </form>
+    </div>
+
+    <div id="taula">
+            <table id="tablaProducto" class="table table-dark table-striped table-hover table-bordered">
+            <thead class="thead-dark justify-content-md-center">
+                <tr>
+                    <th class="Cabecera" style="width: 8%">Id</th>
+                    <th style="width: 15%"  class="Cabecera">Proveedor</th>
+                    <th style="width: 25%"  class="Cabecera">Producto</th>
+                    <th style="width: 6%"  class="Cabecera">Costo</th>
+                    <th style="width: 6%"  class="Cabecera">Precio Vta.</th>
+                    <th style="width: 6%"  class="Cabecera">PVP Sug.</th>
+                    <th style="width: 6%"  class="Cabecera">Utilidad</th>
+                    <th style="width: 6%"  class="Cabecera">% Util.</th>
+                    <th style="width: 8%"  class="Cabecera">Imagen</th>
+                    <th style="width: 25%"  class="Cabecera">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td style="width: 8%">{{ producto[0] }}</td>
+                    <td style="width: 15%">{{ producto[7] }} </td>
+                    <td style="width: 25%">{{ producto[1] }} </td>
+                    <td style="width: 6%">{{ producto[2] }} </td>
+                    <td style="width: 6%">{{ producto[3] }} </td>
+                    <td style="width: 6%">{{ producto[4] }} </td>
+                    <td style="width: 6%">{{ producto[5] }} </td>
+                    <td style="width: 6%">{{ producto[6] }} </td>
+                    <td style="width: 8%">
+                        <img class="img-thumbnail rounded-3" width="30px" height="30px" src="uploads/{{producto[8]}}">
+                    </td>
+                    <td style="width: 25%"> 
+                        <a class="btn btn-warning" href="/editarProducto/{{producto[0]}}">Editar</a>  
+                        <a onClick="return confirm('¿Desea borrar el registro - {{ producto[1] }} ?') " class="btn btn-danger" href="/eliminarProducto/{{producto[0]}}">Eliminar</a>
+                    </td>
+                </tr>    
+                {% endfor %}           
+            </tbody>
+        </table>
+    </div>
+
+   
+    </body>
+  {% endblock %}

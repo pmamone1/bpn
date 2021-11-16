@@ -1,0 +1,66 @@
+{% extends "plantilla.html" %}
+{% block titulo %} ALta de Productos {% endblock %}
+
+{% block head %}
+ 
+{% endblock %}
+
+{% block contenido %}
+<body id="alta_body" onload="limpiarcampos(); load();">    
+ 
+      <div class="form-altaP">
+      <form id="formulario_alta_producto" method="post" action="{{ url_for('guardaproducto')}}" enctype="multipart/form-data" autocomplete="on"> 
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div>
+            <p  id="mensaje" class="alert_messageAlta iii">{{message|capitalize}}</p>
+        </div>
+        
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <h1 class="form-title">ALta de Productos</h1>
+        <div>
+          <label class="label-altaP">Proveedor:</label>
+          <input type="text" class="texto" id="proveedor" name="proveedor"  tabindex="1" autofocus="on" placeholder="Proveedor..." maxlength="45" required onblur="SinFoco(this)" onkeyup="Minusculas(this);"><br>
+        </div>
+        <div>
+          <label class="label-altaP">Producto:</label>
+          <input type="text" class="texto" id="producto" name="producto" tabindex="2" placeholder="Nombre del Producto..." maxlength="80" required onblur="SinFoco(this)" onkeyup="Minusculas(this);"><br>
+        </div>
+        <div>
+          <label class="label-altaP">Costo:</label>
+          <input type="number" step="0.01" class="texto numero cuenta" id="costo" tabindex="3" name="costo" placeholder="Precio de Costo..." required maxlength="15"><br>
+        </div>
+        <div>
+          <label class="label-altaP">Precio Venta:</label>
+          <input type="number" step="0.01" class="texto numero cuenta" id="preciovta" tabindex="4" name="preciovta" placeholder="Precio de Venta..." required maxlength="15"><br>
+        </div>
+        <div>
+          <label class="label-altaP">PVP Sugerido:</label>
+          <input type="number" step="0.01" class="texto numero" id="pvpsug" name="pvpsug" tabindex="5" placeholder="PVP Sugerido..." maxlength="15"><br>
+        </div>
+        <div class="util">
+          <label class="label-altaP" id="util">Utilidad:</label>
+          <input type="text" class="texto numero resultado" readonly="readonly" id="utilidad" name="utilidad" value="0" maxlength="15"><br>
+        </div>
+        <div class="util">
+          <label class="label-altaP" id="util2">% de utilidad:</label>
+          <input type="text" readonly="readonly" class="texto numero resultado" id="porcutilidad" name="porcutilidad" maxlength="15" value="0"><br>
+        </div>
+        <div>
+          <label class="label-altaP">Imagen:</label>
+          <input type="file" class="texto" id="imagen" tabindex="6" name="imagen">
+        </div><br>
+        <div>
+          <span><button type="submit" id="btn-reg" tabindex="7">Guardar Producto</button></span>
+          <span><a href="/home.html"><button id="btn-reg" onclick="Volver();">Volver</button></a></span>
+        </div>
+      </form>
+     
+    </div>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/altaproducto.js')}}"></script>
+    </body>
+  {% endblock %}

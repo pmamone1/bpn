@@ -1,0 +1,55 @@
+{% extends 'plantilla.html' %}
+{% block titulo %} Ventas Salidas {% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+{% endblock %}
+
+{% block contenido %}
+<body onload="load();">
+<form id="form-editaProd" method="POST" action="{{ url_for('graba_ventas_salidas') }}">
+  <div class="card">
+    <div class="card-header">
+      Ventas Salida
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Datos de la Salida</h5>
+    
+        <p class="card-text">
+            <input id="id" type="hidden" name="id" value="{{ producto[0][0] }}">
+            <div class="form-group">
+                <label for="my-input">Producto:</label>
+                <input class="form-control resultado numero" tabindex="0" readonly="readonly" type="text" value="{{ producto[0][4] }}" id="producto" name="producto">
+              </div>
+              <br>
+            <input id="factura_venta" type="hidden" value="{{ producto[0][9] }}" name="factura_venta">
+            <div class="form-group">
+                <label for="my-input">Ingrese Venta:</label>
+                <input class="form-control resultado numero" onfocus="this.select();" tabindex="1" autofocus="true" type="number" value="{{ producto[0][12] }}" id="venta" name="venta">
+              </div>
+              <br>
+            <div class="form-group">
+                <label for="my-input">Carga:</label>
+                <input class="form-control resultado numero" tabindex="2" type="number" readonly="readonly" value="{{ producto[0][5] }}" id="carga" name="carga">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="my-input">Stock:</label>
+                <input class="form-control resultado numero" id="stock" type="number" tabindex="3" readonly="readonly" value="{{ producto[0][13] }}" name="stock">
+              </div>
+              <br><br><br>
+          <input class="form-control resultado numero" type="hidden" value="{{ producto[0][15] }}" id="liquidado" name="liquidado">
+          <div class="form-group">
+            <span><button type="submit" id="btn-reg" tabindex="4" >Guardar Venta</button></span>
+            <span><a href="url_for{'/consultaSalidas'}"><button tabindex="5" id="btn-reg">Volver</button></a></span>
+          </div>  
+      </p>
+        
+    </div>
+  </form>
+       <!--<a href="{{ url_for('home') }}">Volver</a>-->
+       <script type="text/javascript" src="{{ url_for('static',filename='js/ventasSalidas.js')}}"></script>
+       <script type="text/javascript" src="{{ url_for('static',filename='js/altaproducto.js')}}"></script>
+</body>
+{% endblock %}

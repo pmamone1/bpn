@@ -1,0 +1,74 @@
+{% extends "plantilla.html" %}
+{% block titulo %} Salidas de Productos {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/cr-1.5.5/date-1.1.1/fc-4.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/rr-1.2.8/sc-2.0.5/sb-1.3.0/sp-1.4.0/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/cr-1.5.5/date-1.1.1/fc-4.0.1/fh-3.2.0/kt-2.6.4/r-2.2.9/rr-1.2.8/sc-2.0.5/sb-1.3.0/sp-1.4.0/datatables.min.js"></script>
+ 
+{% endblock %}
+
+{% block contenido %}
+<body onload="limpiarcampos(); load();">    
+ 
+      <div class="form-alta-salidas">
+        <form id="formulario_alta_salidas" method="post" action="{{ url_for('graba_salidas')}}" autocomplete="on"> 
+        {{ form.hidden_tag() }}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div>
+            <p  id="mensaje" class="alert_messageAlta iii mensajeSalida">{{message|capitalize}}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1 class="form-title">Salida de Productos</h1>
+        <div class="salidasDiv">   
+            {{ form.fecha.label(class="label-Salida") }}
+            {{ form.fecha(class='datepicker inp',autofocus="on") }}
+        </div>
+        <div class="salidasDiv">   
+          {{ form.proveedor.label(class="label-Salida") }}
+          {{ form.proveedor(class="inp", **{"onchange":"getCategories()"})}}
+        </div>
+        <div class="salidasDiv">   
+          {{ form.cliente.label(class="label-Salida") }}
+          {{ form.cliente(class="inp", **{"onchange":"getCategories()"}) }}
+        </div>
+        <div class="salidasDiv">   
+          {{ form.producto.label(class="label-Salida") }}
+          {{ form.producto(class="select inp",onblur="busca_producto()") }}
+        </div>
+        <div class="salidasDiv">   
+          {{ form.cantidad.label(class="label-Salida") }}
+          {{ form.cantidad(class="inp",type="number",min="0") }}
+        </div>
+        <div class="salidasDiv">   
+          {{ form.precio_costo.label(class="label-Salida") }}
+          {{ form.precio_costo(class="inp",type="number",step="0.01",min="0") }}
+        </div>
+        <div class="salidasDiv">   
+          {{ form.precio_venta.label(class="label-Salida") }}
+          {{ form.precio_venta(class="inp",type="number",step="0.01",min="0") }}
+        </div>
+          {{form.factura_costo}}
+          {{form.factura_venta}}
+          {{form.utilidad_unidad}}
+          {{form.utilidad_total}}
+          {{form.cantidad_vendida}}
+          {{form.stock}}
+          {{form.saldo}}
+          {{form.liquidado}}
+        <div class="salidasDiv">
+          <span><button type="submit" id="btn-reg">Guardar Salida</button></span>
+          <span><a href="/home.html"><button id="btn-reg" onclick="Volver();">Volver</button></a></span>
+        </div>
+        
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>      
+    <script type="text/javascript"  src="{{ url_for('static',filename='js/altaproducto.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/salidas.js')}}"></script>
+</body>
+{% endblock %}

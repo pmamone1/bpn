@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <!-- META-DATOS -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="bepana - venta de productos">
+  	<meta name="keywords" content="HTML, CSS, JavaScript, logística, distribución, venta, productos, cartas, barbijos">
+  	<meta name="author" content="Pablo Mario Mamone">
+	<meta name="copyright" content="© 2021, Noviembre, Buenos Aires.">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enlace con la hoja de estilo.css -->
+	<link rel="stylesheet" type = "text/css" href="{{ url_for('static',filename='css/estilos.css')}}">
+
+    <!-- Enlace a Animate CSS -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Titulo Pagina -->
+    <title>Bepana Registrate!</title>
+
+    <!-- Cargamos el icono  -->
+		<link rel="icon" href="{{ url_for('static',filename='img/logo.png')}}">
+
+</head>
+<body onload="LimpiarCampos()">
+    
+    <form id="registrate" method="post" action="{{ url_for('reg_guardado')}}" class="form-box animate__animated animate__fadeInUp"
+            autocomplete="off"> 
+        <img src="{{ url_for('static',filename='img/logo.png')}}" alt="logo" class="form-logo">
+        <h1 class="form-title">Registrate !</h1>
+        <input type="text" class="texto" id="nombre" name="nombre" placeholder="Nombre" maxlength="35" onblur="SinFoco(this)" onkeyup="Minusculas(this);">
+        <input type="email" class="texto" id="email" name="email" placeholder="Email" maxlength="35" onblur="SinFoco(this)" onkeyup="Minusculas(this);">
+        <!--<input type="text" class="texto" id="usu" name="usu" placeholder="Nombre de Usuario" maxlength="20" onblur="SinFoco(this)" onkeyup="Minusculas(this);">-->
+        <input type="password" class="texto" id="pass" name="pass"  placeholder="Password" maxlength="15" onblur="SinFoco(this)" onkeyup="Minusculas(this);">
+        <span><button type="submit" id="btn-reg">Guardar</button></span>
+        <span><a class ="form-side" href="{{ url_for('index')}}">Volver</a></button></span>
+    </form>
+   
+    <!-- Enlace a js -->
+    <script type="text/javascript" src="{{ url_for('static',filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/registrate.js')}}"></script>
+</body>
+</html>
