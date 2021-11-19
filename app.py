@@ -9,7 +9,7 @@ from flask.helpers import url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import mysql.connector
-from pymysql import NULL
+#from pymysql import NULL
 from controlador_usu import insertar_usu
 from flask import send_from_directory
 
@@ -58,7 +58,7 @@ mail1.init_app(app)
 # Inicializamos el MAIN #
 if __name__ == '__main__':
     # guaranteed to not be run on a production server
-    #    assert os.path.exists('.env')  # for other environment variables...
+    assert os.path.exists('.env')  # for other environment variables...
     os.environ['FLASK_ENV'] = 'development'  # HARD CODE since default is production
     os.environ['FLASK_APP'] = 'app.py'
     app.run(debug=True, port =8000)    
