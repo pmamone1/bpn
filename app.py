@@ -33,8 +33,8 @@ from datetime import date
 
 #  creamos instancia de flask
 app = Flask(__name__)
-app.debug = True
-IS_DEV = app.env == 'development'  # FLASK_ENV env. variable
+#app.debug = True
+#IS_DEV = app.env == 'development'  # FLASK_ENV env. variable
 
 # secret key
 app.config['SECRET_KEY']= "Pablo Mamone ultra secreta clave que en ingles quiere decir secret key"
@@ -56,12 +56,12 @@ mail1 = Mail()
 mail1.init_app(app)
 
 # Inicializamos el MAIN #
-if __name__ == '__main__':
+#if __name__ == '__main__':
     # guaranteed to not be run on a production server
-    assert os.path.exists('.env')  # for other environment variables...
-    os.environ['FLASK_ENV'] = 'development'  # HARD CODE since default is production
-    os.environ['FLASK_APP'] = 'app.py'
-    app.run(debug=True, port =8000)    
+#    assert os.path.exists('.env')  # for other environment variables...
+#    os.environ['FLASK_ENV'] = 'development'  # HARD CODE since default is production
+#    os.environ['FLASK_APP'] = 'app.py'
+#    app.run(debug=True, port =8000)    
 
     
 ####################################################################################################################
